@@ -9,7 +9,7 @@ def verificar_entrada(idade_recebida):
 comandas = {}
 
 while True:
-    print("\n--- MENU DO BAR 2.0 ---")
+    print("\n--- MENU DO BAR ---")
     print("1. Cadastrar Cliente")
     print("2. Lançar Bebidas")
     print("3. Fechar Conta (Remover do Bar)")
@@ -18,14 +18,20 @@ while True:
     opcao = input("Escolha uma opção: ")
 
     if opcao == "1":
-        idade_usuario = int(input("Digite sua idade: "))
-        mensagem = verificar_entrada(idade_usuario)
-        print(mensagem)
+        try:
+            idade_usuario = int(input("Digite sua idade: "))
+            mensagem = verificar_entrada(idade_usuario)
+            print(mensagem)
 
-        if "proibida" not in mensagem:
-            nome = input("Digite o nome para abrir comanda: ").lower()
-            comandas[nome] = 0
-            print(f"Comanda de {nome.capitalize()} aberta!")
+            if "proibida" not in mensagem:
+                nome = input("Digite o nome para abrir comanda: ").strip().lower()
+                if nome in comandas:
+                    print("⚠️ Este cliente já possui uma comanda aberta!")
+                else:
+                    comandas[nome] = 0
+                    print(f"✅ Comanda de {nome.capitalize()} aberta!")
+        except ValueError:
+            print("❌ Erro: Digite apenas números para a idade!")
 
     elif opcao == "2":
         busca = input("Quem quer procurar? ").lower()
