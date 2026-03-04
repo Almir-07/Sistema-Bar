@@ -9,7 +9,7 @@ def verificar_entrada(idade_recebida):
 comandas = {}
 
 while True:
-    print("\n--- MENU DO BAR ---")
+    print("\n--- MENU DO BAR 2.0 ---")
     print("1. Cadastrar Cliente")
     print("2. Lançar Bebidas")
     print("3. Fechar Conta (Remover do Bar)")
